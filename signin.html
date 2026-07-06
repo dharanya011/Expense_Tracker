@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Expense Tracker Sign In</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="container-fluid vh-100">
+    <div class="row h-100">
+
+      <!-- Left Side -->
+      <div class="col-lg-6 d-none d-lg-block position-relative p-0">
+
+        <img 
+          src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1200&auto=format&fit=crop"
+          class="w-100 h-100 object-fit-cover"
+          alt="finance"
+        >
+
+        <div class="position-absolute bottom-0 start-0 text-white p-5">
+
+          <div class="mb-4">
+            <i class="bi bi-stack fs-1"></i>
+          </div>
+
+          <h1 class="fw-bold display-5">
+            Welcome to Expense Tracker
+          </h1>
+
+          <p class="fs-5 w-75">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            Eligendi nam dolorum aliquam.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- Right Side -->
+      <div class="col-lg-6 d-flex align-items-center justify-content-center bg-light">
+
+        <div class="card border-0 shadow rounded-5 p-5 py-3" style="width: 430px;">
+
+          <!-- Logo -->
+          <div class="mb-3">
+            <a class="navbar-brand fw-bold text-primary fs-4" href="#">
+              <i class="bi bi-stars"></i> Expense Tracker
+            </a>
+          </div>
+
+          <!-- Heading -->
+          <h2 class="fw-bold mb-2">
+            Sign in
+          </h2>
+
+          <p class="text-secondary fs-5 mb-4">
+            to continue to Expense Tracker
+          </p>
+
+          <!-- Social Buttons -->
+          <button class="btn btn-outline-secondary w-100 py-2 mb-3 text-start">
+            <i class="bi bi-facebook text-primary fs-5 me-3"></i>
+            Continue with Facebook
+          </button>
+
+          <button class="btn btn-outline-secondary w-100 py-2 text-start">
+            <i class="bi bi-google text-danger fs-5 me-3"></i>
+            Continue with Google
+          </button>
+
+          <!-- Divider -->
+          <div class="d-flex align-items-center my-4">
+            <hr class="w-100">
+            <span class="px-3 text-secondary">or</span>
+            <hr class="w-100">
+          </div>
+
+          <!-- Form -->
+          <form id="signInForm">
+
+            <div class="mb-2">
+              <label class="form-label fw-semibold">
+                Your Name
+              </label>
+              <input 
+                type="text" 
+                id="userName"
+                class="form-control form-control-lg"
+                placeholder="e.g. Game Play"
+                required
+              >
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label fw-semibold">
+                Email address
+              </label>
+              <input 
+                type="email" 
+                id="userEmail"
+                class="form-control form-control-lg"
+                placeholder="e.g. gameplay@example.com"
+                required
+              >
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100 py-3 fw-bold">CONTINUE</button>
+          </form>
+
+          <!-- Signup -->
+          <p class="text-secondary mt-4 mb-0">
+            No account?
+            <a href="#" class="text-decoration-none fw-semibold">
+              Sign up
+            </a>
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('signInForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('userName').value.trim();
+      const email = document.getElementById('userEmail').value.trim();
+
+      if (!name || !email) {
+        return;
+      }
+
+      DB.saveUser({ name, email });
+      window.location.href = 'dashboard.html';
+    });
+  </script>
+
+</body>
+</html>

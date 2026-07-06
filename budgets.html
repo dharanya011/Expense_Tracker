@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Budgets</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+  <div class="row vh-100">
+
+    <!-- Sidebar -->
+    <div class="col-lg-2 border-end bg-white d-flex flex-column justify-content-between p-0">
+
+      <div>
+
+        <!-- Logo -->
+        <div class="p-4 border-bottom">
+
+          <h3 class="fw-bold text-primary">
+            <i class="bi bi-stars"></i> Expense
+          </h3>
+
+        </div>
+
+        <!-- Menu -->
+        <div class="p-3 sidebar-menu">
+
+          <a href="dashboard.html"
+             class="btn w-100 text-start py-3 mb-3">
+
+            <i class="bi bi-grid me-2"></i>
+            Dashboard
+
+          </a>
+
+          <a href="budgets.html"
+             class="btn w-100 text-start py-3 mb-2">
+
+            <i class="bi bi-wallet2 me-2"></i>
+            Budgets
+
+          </a>
+
+          <a href="expenses.html"
+             class="btn w-100 text-start py-3 mb-2">
+
+            <i class="bi bi-receipt me-2"></i>
+            Expenses
+
+          </a>
+
+          <a href="upgrade.html"
+             class="btn w-100 text-start py-3">
+
+            <i class="bi bi-shield-check me-2"></i>
+            Upgrade
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- Profile -->
+      <div class="p-4 border-top">
+
+        <button class="btn d-flex align-items-center">
+
+          <div class="bg-success text-white rounded-circle d-flex justify-content-center align-items-center me-3"
+               style="width:45px;height:45px;">
+
+            D
+
+          </div>
+
+          <span class="fw-semibold">
+            Profile
+          </span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-lg-10 bg-light p-0">
+
+      <!-- Navbar -->
+      <div class="d-flex justify-content-end align-items-center border-bottom bg-white p-4">
+
+        <div class="bg-success text-white rounded-circle d-flex justify-content-center align-items-center"
+             style="width:45px;height:45px;">
+
+          D
+
+        </div>
+
+      </div>
+
+      <!-- Content -->
+      <div class="p-5">
+
+        <!-- Heading -->
+        <div class="d-flex justify-content-between align-items-center mb-2">
+
+          <div>
+
+        <h1 class="fw-bold mb-1 d-flex align-items-center">
+
+          <a href="dashboard.html"
+            class="text-dark me-3">
+            <i class="bi bi-arrow-left mb-2 p-2"></i>
+          </a>
+          Budgets
+
+        </h1>
+
+            <p class="text-secondary">
+              Manage your budget easily
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- Row -->
+        <div class="row g-4" id="budgetContainer">
+
+          <!-- Create Budget Card -->
+          <div class="col-lg-4">
+
+            <div
+              class="card create-budget-card rounded-4 shadow-sm p-5 text-center h-100"
+              data-bs-toggle="modal"
+              data-bs-target="#budgetModal"
+            >
+
+              <div class="display-4 fw-bold">
+                +
+              </div>
+
+              <h4 class="fw-semibold mt-3">
+                Create New Budget
+              </h4>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="budgetModal" tabindex="-1">
+
+  <div class="modal-dialog modal-dialog-centered">
+
+    <div class="modal-content rounded-4 border-0">
+
+      <div class="modal-header border-0">
+
+        <h3 class="fw-bold">
+          Create New Budget
+        </h3>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal">
+        </button>
+
+      </div>
+
+      <div class="modal-body p-4">
+
+        <form id="budgetForm">
+
+          <!-- Emoji Selection -->
+          <div class="mb-4 position-relative">
+            <label class="form-label fw-semibold d-block">Select Icon</label>
+            <button type="button" id="emojiSelectBtn" class="emoji-btn">
+              🛍
+            </button>
+            <div id="emojiPicker" class="emoji-picker-popover">
+              <span>🛍</span>
+              <span>🏠</span>
+              <span>🌴</span>
+              <span>🚘</span>
+              <span>📺</span>
+              <span>🍔</span>
+              <span>✈️</span>
+              <span>🎮</span>
+              <span>💡</span>
+              <span>🎓</span>
+              <span>🏥</span>
+              <span>💵</span>
+            </div>
+            <input type="hidden" id="budgetEmoji" value="🛍">
+          </div>
+
+          <!-- Budget Name -->
+          <div class="mb-4">
+
+            <label class="form-label fw-semibold">
+              Budget Name
+            </label>
+
+            <input
+              type="text"
+              id="budgetName"
+              class="form-control form-control-lg"
+              placeholder="e.g. Shopping"
+              required
+            >
+
+          </div>
+
+          <!-- Budget Amount -->
+          <div class="mb-4">
+
+            <label class="form-label fw-semibold">
+              Budget Amount
+            </label>
+
+            <input
+              type="number"
+              id="budgetAmount"
+              class="form-control form-control-lg"
+              placeholder="e.g. 5000"
+              required
+            >
+
+          </div>
+
+          <!-- Button -->
+          <button class="btn btn-primary w-100 py-3 fw-semibold">
+
+            Create Budget
+
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
+<!-- JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  renderBudgets();
+
+  // Emoji picker logic
+  const emojiBtn = document.getElementById('emojiSelectBtn');
+  const emojiPicker = document.getElementById('emojiPicker');
+  const emojiInput = document.getElementById('budgetEmoji');
+
+  emojiBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    emojiPicker.classList.toggle('show');
+  });
+
+  // Select emoji
+  emojiPicker.addEventListener('click', (e) => {
+    if (e.target.tagName === 'SPAN') {
+      const emoji = e.target.textContent;
+      emojiBtn.textContent = emoji;
+      emojiInput.value = emoji;
+      emojiPicker.classList.remove('show');
+    }
+  });
+
+  // Close picker when clicking outside
+  document.addEventListener('click', () => {
+    emojiPicker.classList.remove('show');
+  });
+});
+
+function renderBudgets() {
+  const budgets = DB.getBudgets();
+  const expenses = DB.getExpenses();
+
+  // Compute spent amount per budget
+  const spentMap = {};
+  budgets.forEach(b => spentMap[b.id] = 0);
+  
+  const expenseCounts = {};
+  expenses.forEach(e => {
+    if (spentMap[e.budgetId] !== undefined) {
+      spentMap[e.budgetId] += Number(e.amount);
+    }
+    expenseCounts[e.budgetId] = (expenseCounts[e.budgetId] || 0) + 1;
+  });
+
+  const container = document.getElementById('budgetContainer');
+  
+  // Remove all child elements except the first one (the Create card)
+  while (container.children.length > 1) {
+    container.removeChild(container.lastChild);
+  }
+
+  budgets.forEach(b => {
+    const spent = spentMap[b.id] || 0;
+    const amount = Number(b.amount);
+    const remaining = amount - spent;
+    const percent = Math.min((spent / amount) * 100, 100);
+    const count = expenseCounts[b.id] || 0;
+    const isOver = spent > amount;
+
+    const card = document.createElement('div');
+    card.className = 'col-lg-4';
+    card.style.cursor = 'pointer';
+    card.onclick = () => {
+      window.location.href = `expenses.html?budgetId=${b.id}`;
+    };
+
+    card.innerHTML = `
+      <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="d-flex align-items-center">
+            <div class="bg-light rounded-circle d-flex justify-content-center align-items-center me-3"
+                 style="width:60px;height:60px;font-size:25px;">
+              ${b.emoji || '💰'}
+            </div>
+            <div>
+              <h4 class="fw-bold mb-0">${b.name}</h4>
+              <small class="text-secondary">${count} Item${count !== 1 ? 's' : ''}</small>
+            </div>
+          </div>
+          <h2 class="text-primary fw-bold mb-0">$${amount}</h2>
+        </div>
+        <div class="d-flex justify-content-between">
+          <small class="${isOver ? 'text-danger fw-bold' : 'text-secondary'}">$${spent} Spend</small>
+          <small class="${remaining < 0 ? 'text-danger fw-bold' : 'text-secondary'}">$${Math.abs(remaining)} ${remaining < 0 ? 'Over' : 'Remaining'}</small>
+        </div>
+        <div class="progress mt-2" style="height:8px;">
+          <div class="progress-bar ${isOver ? 'bg-danger' : ''}" style="width: ${percent}%;"></div>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// Form Submission
+const form = document.getElementById("budgetForm");
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("budgetName").value.trim();
+  const amount = parseFloat(document.getElementById("budgetAmount").value);
+  const emoji = document.getElementById("budgetEmoji").value;
+
+  const newBudget = {
+    id: 'b_' + Date.now(),
+    name: name,
+    amount: amount,
+    emoji: emoji,
+    createdAt: new Date().toISOString()
+  };
+
+  DB.addBudget(newBudget);
+  renderBudgets();
+
+  // Close Modal
+  const modalEl = document.getElementById("budgetModal");
+  const modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+  modal.hide();
+
+  // Reset Form
+  form.reset();
+  document.getElementById('emojiSelectBtn').textContent = '🛍';
+  document.getElementById('budgetEmoji').value = '🛍';
+});
+</script>
+
+</body>
+</html>

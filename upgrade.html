@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Upgrade</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="bg-light">
+
+<div class="container-fluid">
+  <div class="row vh-100">
+
+    <!-- Sidebar -->
+    <div class="col-lg-2 bg-white border-end d-flex flex-column justify-content-between p-0">
+
+      <div>
+
+        <!-- Logo -->
+        <div class="p-4 border-bottom">
+
+          <h3 class="fw-bold text-primary">
+            <i class="bi bi-stars"></i> Expense
+          </h3>
+
+        </div>
+
+        <!-- Menu -->
+        <div class="p-3 sidebar-menu">
+
+          <a href="dashboard.html"
+             class="btn w-100 text-start py-3 mb-3">
+
+            <i class="bi bi-grid me-2"></i>
+            Dashboard
+
+          </a>
+
+          <a href="budgets.html"
+             class="btn w-100 text-start py-3 mb-3">
+
+            <i class="bi bi-wallet2 me-2"></i>
+            Budgets
+
+          </a>
+
+          <a href="expenses.html"
+             class="btn w-100 text-start py-3 mb-3">
+
+            <i class="bi bi-receipt me-2"></i>
+            Expenses
+
+          </a>
+
+          <a href="upgrade.html"
+             class="btn w-100 text-start py-3">
+
+            <i class="bi bi-shield-check me-2"></i>
+            Upgrade
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- Profile -->
+      <div class="p-4 border-top">
+
+        <div class="d-flex align-items-center">
+
+            <div class="bg-success text-white rounded-circle d-flex justify-content-center align-items-center"
+             style="width:45px;height:45px;">
+
+          D
+
+        </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+
+    <!-- Main Content -->
+    <div class="col-lg-10 p-0">
+
+      <!-- Top Navbar -->
+      <div class="bg-white border-bottom p-4 d-flex justify-content-between align-items-center">
+
+        <!-- Back Arrow -->
+        <a href="expenses.html"
+           class="text-dark fs-3">
+
+          <i class="bi bi-arrow-left"></i>
+
+        </a>
+
+        <!-- Profile Circle -->
+        <div class="bg-success text-white rounded-circle d-flex justify-content-center align-items-center"
+             style="width:45px;height:45px;">
+
+          D
+
+        </div>
+
+      </div>
+
+
+
+
+
+      <!-- Upgrade Content -->
+      <div class="container py-5">
+
+        <h1 class="fw-bold text-center mb-5">
+          Upgrade Plans
+        </h1>
+
+        <div class="row g-4 justify-content-center">
+
+          <!-- Monthly -->
+          <div class="col-lg-4">
+
+            <div class="card border-0 shadow-sm rounded-4 p-5 text-center h-100">
+
+              <h2 class="fw-bold mb-3">
+                Monthly
+              </h2>
+
+              <h1 class="text-primary fw-bold mb-4">
+
+                $9
+
+                <span class="fs-5 text-secondary">
+                  /month
+                </span>
+
+              </h1>
+
+              <ul class="list-unstyled mb-4">
+
+                <li class="mb-3">
+                  ✅ Unlimited Budgets
+                </li>
+
+                <li class="mb-3">
+                  ✅ Expense Analytics
+                </li>
+
+                <li class="mb-3">
+                  ✅ Cloud Backup
+                </li>
+
+              </ul>
+
+              <button class="btn btn-primary w-100 py-3" data-plan="Monthly" data-price="9">
+                Choose Plan
+              </button>
+
+            </div>
+
+          </div>
+
+
+
+
+
+          <!-- Yearly -->
+          <div class="col-lg-4">
+
+            <div class="card border-0 shadow rounded-4 p-5 text-center h-100">
+
+              <h2 class="fw-bold mb-3">
+                Yearly
+              </h2>
+
+              <h1 class="text-primary fw-bold mb-4">
+
+                $99
+
+                <span class="fs-5 text-secondary">
+                  /year
+                </span>
+
+              </h1>
+
+              <ul class="list-unstyled mb-4">
+
+                <li class="mb-3">
+                  ✅ Unlimited Budgets
+                </li>
+
+                <li class="mb-3">
+                  ✅ Expense Analytics
+                </li>
+
+                <li class="mb-3">
+                  ✅ Priority Support
+                </li>
+
+              </ul>
+
+              <button class="btn btn-primary w-100 py-3" data-plan="Yearly" data-price="99">
+                Choose Plan
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Payment History -->
+        <div class="container py-4">
+          <h3 class="fw-bold text-center mb-3">Payment History</h3>
+          <ul id="paymentHistory" class="list-group mx-auto" style="max-width:800px;"></ul>
+        </div>
+
+        <!-- Payment Modal -->
+        <div class="modal fade" id="paymentModal" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-primary">Confirm Payment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p id="paymentSummary" class="mb-3"></p>
+
+                <div class="mb-3">
+                  <label class="form-label">Cardholder Name</label>
+                  <input id="cardName" type="text" class="form-control" placeholder="Name on card">
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Card Number</label>
+                  <input id="cardNumber" type="text" class="form-control" placeholder="xxxx-xxxx-xxxx-xxxx">
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button id="confirmPaymentBtn" type="button" class="btn btn-primary">Pay</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

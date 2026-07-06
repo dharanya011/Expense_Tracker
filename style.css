@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary-color: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-light: #e0e7ff;
+  --bg-light: #f8fafc;
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-light);
+  color: #1e293b;
+}
+
+/* Sidebar Styling */
+.sidebar-menu a.btn {
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  color: #64748b;
+  border: none;
+}
+
+.sidebar-menu a.btn:hover {
+  background-color: #f1f5f9;
+  color: var(--primary-color);
+  transform: translateX(4px);
+}
+
+.sidebar-menu a.btn.active {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+/* Card Styling */
+.card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid rgba(241, 245, 249, 0.8) !important;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover) !important;
+}
+
+/* Custom Interactive Budget Creation Card */
+.create-budget-card {
+  border: 2px dashed #cbd5e1 !important;
+  background-color: transparent;
+  transition: all 0.25s ease;
+}
+
+.create-budget-card:hover {
+  border-color: var(--primary-color) !important;
+  background-color: rgba(79, 70, 229, 0.02);
+  cursor: pointer;
+}
+
+/* Chart Styles */
+.chart-bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  max-width: 80px;
+}
+
+.chart-bar {
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background: linear-gradient(180deg, var(--primary-color) 0%, #818cf8 100%);
+  transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  cursor: pointer;
+}
+
+.chart-bar:hover {
+  background: linear-gradient(180deg, var(--primary-hover) 0%, #6366f1 100%);
+}
+
+.chart-bar::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background-color: #1e293b;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.chart-bar:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Modal styling */
+.modal-content {
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* Emoji Picker Button and Popover */
+.emoji-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid #e2e8f0;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+.emoji-btn:hover {
+  border-color: var(--primary-color);
+  background-color: #f5f3ff;
+}
+
+.emoji-picker-popover {
+  display: none;
+  position: absolute;
+  z-index: 1050;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  max-width: 250px;
+}
+
+.emoji-picker-popover.show {
+  display: grid;
+}
+
+.emoji-picker-popover span {
+  font-size: 24px;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.1s ease;
+}
+
+.emoji-picker-popover span:hover {
+  background-color: #f1f5f9;
+}
+
+/* Progress bar animation */
+.progress-bar {
+  background-color: var(--primary-color);
+  transition: width 0.6s ease;
+}
+
+.progress-bar.over-budget {
+  background-color: #ef4444;
+}
+
+/* Tables styling */
+.table th {
+  font-weight: 600;
+  color: #475569;
+}
+
+.table td {
+  color: #334155;
+}
+
+.delete-btn {
+  transition: none;
+}
+
+/* Remove hover transform/color for action buttons (keep clickable) */
+.delete-btn:hover {
+  transform: none !important;
+  color: inherit !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Primary buttons override */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.1), 0 2px 4px -1px rgba(79, 70, 229, 0.06);
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background-color: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
+}
