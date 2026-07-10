@@ -161,6 +161,8 @@ DB.initSeed();
 
 // Handle Active Navigation Items
 document.addEventListener('DOMContentLoaded', () => {
+  document.documentElement.style.scrollBehavior = 'smooth';
+
   const currentPath = window.location.pathname.split('/').pop() || 'dashboard.html';
   const activePath = currentPath === 'index.html' ? 'dashboard.html' : currentPath;
 
@@ -194,6 +196,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (greetingEl && greetingEl.textContent.includes('Hi,')) {
       greetingEl.innerHTML = `Hi, ${user.name} ✌`;
     }
+  }
+
+  const landingDots = document.querySelectorAll('.page-pagination .dot');
+  const landingSections = ['home', 'features', 'insights', 'workflow', 'faq'];
+
+  if (landingDots.length) {
+    const updateActiveDot = () => {
+      const scrollPosition = window.scrollY + 220;
+      let activeSection = 'home';
+
+      landingSections.forEach(section => {
+        const element = document.getElementById(section);
+        if (element && scrollPosition >= element.offsetTop) {
+          activeSection = section;
+        }
+      });
+
+      landingDots.forEach(dot => {
+        dot.classList.toggle('active', dot.getAttribute('data-section-link') === activeSection);
+      });
+    };
+
+    window.addEventListener('scroll', updateActiveDot, { passive: true });
+    updateActiveDot();
   }
 
   // Payment modal & history handlers (Upgrade page)
